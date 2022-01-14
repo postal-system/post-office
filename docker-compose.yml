@@ -1,0 +1,21 @@
+version: "3.8"
+
+services:
+  postgresql:
+    restart: always
+    image: 'postgres:latest'
+    container_name: post_offices_db
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=mcpmwC8gGwVKr4Q9xCKZEzEgS
+      - POSTGRES_DB=post_offices
+    ports:
+      - "5435:5432"
+
+  postofficeapp:
+    image: 'application:latest'
+    build:
+      context: .
+    container_name: postofficeapp
+    ports:
+      - 8084:8084
