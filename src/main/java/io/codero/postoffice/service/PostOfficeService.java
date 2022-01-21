@@ -1,19 +1,22 @@
 package io.codero.postoffice.service;
 
+import io.codero.postoffice.dto.FilterPostOfficeDto;
 import io.codero.postoffice.entity.PostOffice;
 import io.codero.postoffice.exception.PostOfficeNotFoundException;
+import io.codero.postoffice.filter.PostOfficeFilter;
 import io.codero.postoffice.repositoty.PostOfficeRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
-
-import java.util.List;
 
 @Slf4j
 @Service
 @RequiredArgsConstructor
 public class PostOfficeService {
     private final PostOfficeRepository repository;
+//    private final PostOfficeFilter filter;
 
     public PostOffice insert(PostOffice postOffice) {
         return repository.save(postOffice);
@@ -23,8 +26,10 @@ public class PostOfficeService {
         return repository.findById(id).orElseThrow(() -> new PostOfficeNotFoundException("Object with " + id + "not found"));
     }
 
-    public List<PostOffice> getAll() {
-        return repository.findAll();
+    public Page<PostOffice> findByFilter(FilterPostOfficeDto dto) {
+        PageRequest pageRequest = PageRequest.of(0, 10);
+        PostOfficeFilter filter = new PostOfficeFilter(dto);
+        return repository.findAll(filter, pageRequest);
     }
 
     public PostOffice update(PostOffice postOffice) {
