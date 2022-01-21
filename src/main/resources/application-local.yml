@@ -1,0 +1,7 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5435/post_offices
+    username: postgres
+    password: mcpmwC8gGwVKr4Q9xCKZEzEgS
+server:
+  port: 8084

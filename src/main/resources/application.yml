@@ -1,11 +1,7 @@
 spring:
-  datasource:
-    url: jdbc:postgresql://localhost:5435/post_offices
-    username: postgres
-    password: mcpmwC8gGwVKr4Q9xCKZEzEgS
+  profiles:
+    active: dev
   liquibase:
     change-log: classpath:db\changelog\db.changelog-master.yaml
   jpa:
     show-sql: true
-server:
-  port: 8084
