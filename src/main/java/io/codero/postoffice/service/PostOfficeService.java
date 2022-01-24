@@ -16,7 +16,6 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 public class PostOfficeService {
     private final PostOfficeRepository repository;
-//    private final PostOfficeFilter filter;
 
     public PostOffice insert(PostOffice postOffice) {
         return repository.save(postOffice);

@@ -1,7 +1,8 @@
 spring:
   datasource:
-    url: jdbc:postgresql://130.193.56.118:5432/post_offices
+    url: jdbc:postgresql://130.193.56.118:5432/pejt_office
     username: postgres
     password: mcpmwC8gGwVKr4Q9xCKZEzEgS
 server:
   port: 10100
+
