@@ -12,10 +12,10 @@ services:
     ports:
       - "5435:5432"
 
-#  postofficeapp:
-#    image: 'application:latest'
-#    build:
-#      context: .
-#    container_name: postofficeapp
-#    ports:
-#      - 8084:8084
+  postofficeapp:
+    image: 'application:latest'
+    build:
+      context: .
+    container_name: postofficeapp
+    ports:
+      - 10100:10100
