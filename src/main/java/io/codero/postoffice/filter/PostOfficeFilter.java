@@ -34,10 +34,10 @@ public class PostOfficeFilter implements Specification<PostOffice> {
                 predicates.add(criteriaBuilder.like(root.get(PostOffice_.address), "%" + dto.getPartOfAddress() + "%")));
 
         Optional.ofNullable(dto.getStartTime()).ifPresent(action ->
-                predicates.add(criteriaBuilder.greaterThanOrEqualTo(root.get(PostOffice_.startTime), LocalTime.parse(dto.getStartTime())) ));
+                predicates.add(criteriaBuilder.greaterThanOrEqualTo(root.get(PostOffice_.endTime), LocalTime.parse(dto.getStartTime())) ));
 
         Optional.ofNullable(dto.getEndTime()).ifPresent(action ->
-                predicates.add(criteriaBuilder.lessThanOrEqualTo(root.get(PostOffice_.endTime), LocalTime.parse(dto.getEndTime()))));
+                predicates.add(criteriaBuilder.lessThanOrEqualTo(root.get(PostOffice_.startTime), LocalTime.parse(dto.getEndTime()))));
 
         return criteriaBuilder.and(predicates.toArray(new Predicate[0]));
 
