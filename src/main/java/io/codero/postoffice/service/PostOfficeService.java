@@ -26,7 +26,7 @@ public class PostOfficeService {
     }
 
     public Page<PostOffice> findByFilter(FilterPostOfficeDto dto) {
-        PageRequest pageRequest = PageRequest.of(0, 10);
+        PageRequest pageRequest = PageRequest.of(0, 100);
         PostOfficeFilter filter = new PostOfficeFilter(dto);
         return repository.findAll(filter, pageRequest);
     }

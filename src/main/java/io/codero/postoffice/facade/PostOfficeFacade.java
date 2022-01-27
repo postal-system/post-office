@@ -22,7 +22,7 @@ public class PostOfficeFacade {
         return mapper.toDto(service.getById(id));
     }
 
-    public PostOfficeDto insert(CreatePostOfficeDto dto) {
+    public PostOfficeDto create(CreatePostOfficeDto dto) {
         PostOffice postOffice = mapper.createDtoToEntity(dto);
         return mapper.toDto(service.insert(postOffice));
     }

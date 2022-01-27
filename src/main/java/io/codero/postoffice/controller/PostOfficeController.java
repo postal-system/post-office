@@ -24,8 +24,8 @@ public class PostOfficeController {
     private final PostOfficeFacade facade;
 
     @PostMapping()
-    public ResponseEntity<PostOfficeDto> insert(@RequestBody CreatePostOfficeDto dto) {
-        return ResponseEntity.ok().body(facade.insert(dto));
+    public ResponseEntity<PostOfficeDto> create(@RequestBody CreatePostOfficeDto dto) {
+        return ResponseEntity.ok().body(facade.create(dto));
     }
 
     @GetMapping("/{id}")
