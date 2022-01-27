@@ -27,16 +27,16 @@ public class PostOfficeFilter implements Specification<PostOffice> {
         Optional.ofNullable(dto.getId()).ifPresent(action ->
                 predicates.add(criteriaBuilder.equal(root.get(PostOffice_.id), dto.getId())));
 
-        Optional.ofNullable(dto.getPartOfAddress()).ifPresent(action ->
+        Optional.ofNullable(dto.getPartOfName()).ifPresent(action ->
                 predicates.add(criteriaBuilder.like(root.get(PostOffice_.name), "%" + dto.getPartOfName() + "%")));
 
         Optional.ofNullable(dto.getPartOfAddress()).ifPresent(action ->
                 predicates.add(criteriaBuilder.like(root.get(PostOffice_.address), "%" + dto.getPartOfAddress() + "%")));
 
-        Optional.ofNullable(dto.getPartOfAddress()).ifPresent(action ->
-                predicates.add(criteriaBuilder.greaterThanOrEqualTo(root.get(PostOffice_.startTime), LocalTime.parse(dto.getStartTime()))));
+        Optional.ofNullable(dto.getStartTime()).ifPresent(action ->
+                predicates.add(criteriaBuilder.greaterThanOrEqualTo(root.get(PostOffice_.startTime), LocalTime.parse(dto.getStartTime())) ));
 
-        Optional.ofNullable(dto.getPartOfAddress()).ifPresent(action ->
+        Optional.ofNullable(dto.getEndTime()).ifPresent(action ->
                 predicates.add(criteriaBuilder.lessThanOrEqualTo(root.get(PostOffice_.endTime), LocalTime.parse(dto.getEndTime()))));
 
         return criteriaBuilder.and(predicates.toArray(new Predicate[0]));
