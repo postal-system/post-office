@@ -10,7 +10,8 @@ build:
       - ./target/
     expire_in: 1 day
   script:
-    - mvn clean package
+    - echo "$MAVEN_SETTINGS" > ~/.m2/settings.xml
+    - mvn clean package -PtraineeshipPomTemplate
   when: manual
   allow_failure: false
 
