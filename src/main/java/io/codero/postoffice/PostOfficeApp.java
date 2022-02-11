@@ -9,4 +9,3 @@ public class PostOfficeApp {
         SpringApplication.run(PostOfficeApp.class, args);
     }
 }
-// TODO: 24.01.2022 Ограничить количество connection
