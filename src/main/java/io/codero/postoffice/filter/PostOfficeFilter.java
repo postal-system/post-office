@@ -19,7 +19,6 @@ import java.util.Optional;
 public class PostOfficeFilter implements Specification<PostOffice> {
     private final FilterPostOfficeDto dto;
 
-
     @Override
     public Predicate toPredicate(Root<PostOffice> root, CriteriaQuery<?> criteriaQuery, CriteriaBuilder criteriaBuilder) {
         List<Predicate> predicates = new ArrayList<>();

@@ -9,6 +9,7 @@ import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMock
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
 import org.springframework.kafka.test.context.EmbeddedKafka;
+import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.web.servlet.MockMvc;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
@@ -17,7 +18,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @SpringBootTest
 @AutoConfigureMockMvc
-@EmbeddedKafka(partitions = 1, brokerProperties = {"listeners=PLAINTEXT://localhost:9092", "port=9092"})
+@TestPropertySource(properties = "spring.autoconfigure.exclude=io.codero.interceptor.context.WebContextAutoConfiguration")
 class PostOfficeControllerTest extends AbstractControllerTest {
     @Autowired
     private MockMvc mvc;
@@ -28,18 +29,18 @@ class PostOfficeControllerTest extends AbstractControllerTest {
     @Test
     void shouldReturnOk() throws Exception {
         String dtoAsJson = jsonGenerate();
-        mvc.perform(post("/post-office")
+        mvc.perform(post("/api/post-offices")
                         .content(dtoAsJson)
                         .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk());
 
-        mvc.perform(get("/post-office/1"))
+        mvc.perform(get("/api/post-offices/1"))
                 .andExpect(status().isOk());
     }
 
     @Test
     void shouldReturnExceptionIfFileNotExist() throws Exception {
-        mvc.perform(get("/post-office/0"))
+        mvc.perform(get("/api/post-offices/0"))
                 .andExpect(status().isNotFound())
                 .andReturn();
     }

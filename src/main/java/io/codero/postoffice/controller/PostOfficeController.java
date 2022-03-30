@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@RequestMapping("/post-office")
+@RequestMapping("/api/post-offices")
 @RequiredArgsConstructor
 public class PostOfficeController {
     private final PostOfficeFacade facade;
