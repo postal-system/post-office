@@ -3,7 +3,3 @@ spring:
     change-log: classpath:db.changelog\db.changelog-master.yaml
   jpa:
     show-sql: true
-interceptor:
-  kafka:
-    bootstrap: "localhost:9092"
-    topic: "url"
