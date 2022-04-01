@@ -1,6 +1,7 @@
 package io.codero.postoffice.controller;
 
 import io.codero.postoffice.dto.CreatePostOfficeDto;
+import io.codero.postoffice.dto.FilterPostOfficeDto;
 import io.codero.postoffice.dto.PostOfficeDto;
 import io.codero.postoffice.facade.PostOfficeFacade;
 import lombok.RequiredArgsConstructor;
@@ -17,14 +18,14 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@RequestMapping("/post-office")
+@RequestMapping("/api/post-offices")
 @RequiredArgsConstructor
 public class PostOfficeController {
     private final PostOfficeFacade facade;
 
     @PostMapping()
-    public ResponseEntity<PostOfficeDto> insert(@RequestBody CreatePostOfficeDto dto) {
-        return ResponseEntity.ok().body(facade.insert(dto));
+    public ResponseEntity<PostOfficeDto> create(@RequestBody CreatePostOfficeDto dto) {
+        return ResponseEntity.ok().body(facade.create(dto));
     }
 
     @GetMapping("/{id}")
@@ -33,9 +34,9 @@ public class PostOfficeController {
         return ResponseEntity.ok().body(dto);
     }
 
-    @GetMapping
-    public ResponseEntity<List<PostOfficeDto>> getAll() {
-        return ResponseEntity.ok().body(facade.getAll());
+    @PostMapping(value = "/filter")
+    public ResponseEntity<List<PostOfficeDto>> findByFilter(@RequestBody FilterPostOfficeDto dto) {
+        return ResponseEntity.ok().body(facade.findByFilter(dto));
     }
 
     @PutMapping()

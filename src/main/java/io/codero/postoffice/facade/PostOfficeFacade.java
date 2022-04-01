@@ -1,6 +1,7 @@
 package io.codero.postoffice.facade;
 
 import io.codero.postoffice.dto.CreatePostOfficeDto;
+import io.codero.postoffice.dto.FilterPostOfficeDto;
 import io.codero.postoffice.dto.PostOfficeDto;
 import io.codero.postoffice.entity.PostOffice;
 import io.codero.postoffice.mapper.PostOfficeMapper;
@@ -21,13 +22,13 @@ public class PostOfficeFacade {
         return mapper.toDto(service.getById(id));
     }
 
-    public PostOfficeDto insert(CreatePostOfficeDto dto) {
+    public PostOfficeDto create(CreatePostOfficeDto dto) {
         PostOffice postOffice = mapper.createDtoToEntity(dto);
         return mapper.toDto(service.insert(postOffice));
     }
 
-    public List<PostOfficeDto> getAll() {
-        return service.getAll().stream().map(mapper::toDto).collect(Collectors.toList());
+    public List<PostOfficeDto> findByFilter(FilterPostOfficeDto dto) {
+        return service.findByFilter(dto).stream().map(mapper::toDto).collect(Collectors.toList());
     }
 
     public PostOfficeDto update(PostOfficeDto dto) {

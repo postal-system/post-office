@@ -6,6 +6,6 @@ import lombok.Data;
 public class CreatePostOfficeDto {
     private String name;
     private String address;
-    private String operationTime;
-    private String metadata;
+    private String startTime;
+    private String endTime;
 }

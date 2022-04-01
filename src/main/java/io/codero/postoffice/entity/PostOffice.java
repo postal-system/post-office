@@ -10,6 +10,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import java.time.LocalTime;
 
 
 @Data
@@ -28,8 +29,11 @@ public class PostOffice {
     @Column(nullable = false)
     private String address;
 
-    @Column(name = "operating_time", nullable = false)
-    private String operationTime;
+    @Column(name = "start_time", nullable = false)
+    private LocalTime startTime;
+
+    @Column(name = "end_time", nullable = false)
+    private LocalTime endTime;
 
     @Column(columnDefinition = "jsonb")
     private String metadata;
