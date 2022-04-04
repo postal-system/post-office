@@ -3,13 +3,3 @@ databaseChangeLog:
       file: db/changelog/data/create_table_post_office.sql
   - include:
       file: db/changelog/data/insert_postoffice.sql
-
-#  - changeSet:
-#      id: 1000
-#      author: author
-#      changes:
-#        - loadData:
-#            encoding: UTF-8
-#            file: db/changelog/data/post_office.csv
-#            separator: ;
-#            tableName: post_office

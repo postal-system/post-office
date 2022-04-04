@@ -7,7 +7,7 @@ services:
     container_name: post_offices_db
     environment:
       - POSTGRES_USER=postgres
-      - POSTGRES_PASSWORD=mcpmwC8gGwVKr4Q9xCKZEzEgS
+      - POSTGRES_PASSWORD=1234
       - POSTGRES_DB=pejt_office
     ports:
       - "5435:5432"
@@ -39,4 +39,4 @@ services:
 #      context: .
 #    container_name: postofficeapp
 #    ports:
-#      - 10100:10100
+#      - 8084:8084
