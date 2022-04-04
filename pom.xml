@@ -4,7 +4,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>io.codero</groupId>
-    <artifactId>post-office-app</artifactId>
+    <artifactId>post-office</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <properties>
         <springfox-boot-starter.version>3.0.0</springfox-boot-starter.version>
